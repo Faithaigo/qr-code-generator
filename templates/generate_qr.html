@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content  %}
+<form style="width:700px;">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone">
+              </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email">
+              </div>
+              <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <textarea  class="form-control" id="address"></textarea>
+              </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label for="company_name" class="form-label">Company name</label>
+                <input type="text" class="form-control" id="company_name">
+            </div>
+            <div class="mb-3">
+                <label for="company_logo" class="form-label">Company logo</label>
+                <input type="text" class="form-control" id="company_logo">
+            </div>
+            <div class="mb-3">
+                <label for="company_website" class="form-label">Company website</label>
+                <input type="text" class="form-control" id="company_website">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+  </form>
+{% endblock  %}
