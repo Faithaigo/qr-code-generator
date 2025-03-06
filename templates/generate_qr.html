@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content  %}
-<form method="POST" action="{{url_for('generate_code')}}" style="width:700px;" >
+<form method="POST" action="{{url_for('generate_code')}}" style="max-width:700px; width:90%" >
     {{form.hidden_tag()}}
     <div class="row">
         <div class="col">
@@ -35,6 +35,13 @@
               </div>
         </div>
         <div class="col">
+            <div class="mb-3">
+                {{form.position.label(class="form-label")}}
+                {{form.position(class="form-control")}}
+                {% for error in form.position.errors %}
+                    <span style="color:red;">{{error}}</span>
+                {% endfor %}
+            </div>
             <div class="mb-3">
                 {{form.company_name.label(class="form-label")}}
                 {{form.company_name(class="form-control")}}
