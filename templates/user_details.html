@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card-container">
+    <div class="download-container">
+        <button class="download-btn" style="margin-right:10px;" onclick="downloadPdfCard()">Download PDF</button>
+        <button class="download-btn"  onclick="downloadJpgCard()">Download JPG</button>
+    </div>
+    <div class="card business-card" id="businessCard">
+        <div class="card-header">
+            <div class="company-details">
+                <h2>{{user.company_name}}</h2>
+                <p>{{user.company_tag_line}}</p>
+            </div>
+        </div>
+    
+    
+        <div class="card-body">
+            <div class="person-name">{{user.full_name}}</div>
+            <div class="person-position">{{user.position}}</div>
+    
+        
+            <div class="row">
+                <div class="col-6">
+                    <div class="contact-info">
+                        <p>{{user.phone}}</p>
+                        <p>{{user.email}}</p>
+                        <p>{{user.company_website}}</p>
+                    </div>
+                </div>
+    
+                <div class="col-6 address-container">
+                    <div class="address-info">
+                        <p>{{user.address}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
