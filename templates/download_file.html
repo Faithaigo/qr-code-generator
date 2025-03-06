@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
 {% block content  %}
-    <img src="{{url_for('static', filename='images/' + id|string + '_business_card.png')}}">
+<div style="display:flex; flex-direction:column;">
+    <div style="display:flex; justify-content:right; margin-bottom:5px;">
+        <button class="download-btn"   onclick="downloadQrcode()">Download</button>
+    </div>
+    <img id="qr_code" src="{{url_for('static', filename='images/' + id|string + '_business_card.png')}}">
+</div>
 {% endblock  %}
