@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <script src="{{url_for('static', filename='js/bootstrap.bundle.js.map')}}"></script>
+    <script src="{{url_for('static', filename='js/html2canvas.min.js')}}"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
 </head>
 <body>
     <main class="min-container">
         {% block content %}{% endblock %}
     </main>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
 </body>
 </html>
