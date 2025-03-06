@@ -24,6 +24,7 @@ db.init_app(app)
 
 class PersonDetailsForm(FlaskForm):
     full_name = StringField("Name", validators=[DataRequired()])
+    position = StringField("Position", validators=[DataRequired()])
     phone = StringField("Phone", validators=[DataRequired()])
     email = EmailField("Email", validators=[DataRequired()])
     address = TextAreaField("Address")
@@ -38,7 +39,7 @@ def generate_code():
  
     if request.method == "POST":
         if form.validate_on_submit():
-            new_user = User(full_name=form.full_name.data, phone=form.phone.data, 
+            new_user = User(full_name=form.full_name.data, position=form.position.data, phone=form.phone.data, 
                             email=form.email.data, address=form.address.data,
                             company_name=form.company_name.data,
                             company_tag_line=form.company_tag_line.data,
@@ -66,8 +67,9 @@ def generate_code():
     return render_template('generate_qr.html', form=form)
 
 @app.route('/user/<int:id>')
-def get_user_details():
-    return "Hello world"
+def get_user_details(id):
+    user = db.get_or_404(User, id)
+    return render_template('user_details.html', user=user)
 
 @app.route('/download_file/<int:id>')
 def download_file(id):
