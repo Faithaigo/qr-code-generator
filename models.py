@@ -12,6 +12,7 @@ db = SQLAlchemy(model_class=Base)
 class User(db.Model):
     id:Mapped[int] = mapped_column(primary_key=True)
     full_name:Mapped[str] 
+    position:Mapped[str]
     phone:Mapped[str] 
     email:Mapped[str] 
     address:Mapped[str] 
