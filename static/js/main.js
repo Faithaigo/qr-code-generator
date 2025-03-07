@@ -1,14 +1,22 @@
-async function downloadJpgCard() {
-    const card = document.getElementById('businessCard');
 
+const card = document.getElementById('businessCard');
+const code = document.getElementById('qr_code');
+
+
+async function getCanvas(element){
     const scale = 3;  
-    const canvas = await html2canvas(card, {
+    const canvas = await html2canvas(element, {
         scale: scale,
         useCORS: true
     });
 
-    const imgData = canvas.toDataURL('image/jpeg', 1.0); 
+    return canvas.toDataURL('image/jpeg', 1.0); 
 
+}
+
+
+async function downloadJpgCard() {
+    const imgData = await getCanvas(card)
     const link = document.createElement('a');
     link.href = imgData;
     link.download = 'business-card.jpg';
@@ -16,15 +24,7 @@ async function downloadJpgCard() {
 }
 
 async function downloadPdfCard() {
-    const card = document.getElementById('businessCard');
-
-    const scale = 3; 
-    const canvas = await html2canvas(card, {
-        scale: scale,
-        useCORS: true
-    });
-
-    const imgData = canvas.toDataURL('image/jpeg', 1.0); 
+    const imgData = await getCanvas(card)
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF({
@@ -38,16 +38,8 @@ async function downloadPdfCard() {
 }
 
 async function downloadQrcode() {
-    const card = document.getElementById('qr_code');
-
-    const scale = 3;  
-    const canvas = await html2canvas(card, {
-        scale: scale,
-        useCORS: true
-    });
-
-    const imgData = canvas.toDataURL('image/jpeg', 1.0); 
-
+    const imgData = await getCanvas(code)
+    
     const link = document.createElement('a');
     link.href = imgData;
     link.download = 'QR Code.jpg';
