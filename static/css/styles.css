@@ -1,3 +1,8 @@
+h1{
+    margin-bottom:2rem;
+}
+
+
 .min-container{
     display: flex;
     flex-direction: column;
