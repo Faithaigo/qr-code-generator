@@ -60,7 +60,11 @@ def generate_code():
                 qr.make(fit=True)
                 img = qr.make_image(fill_color="black", back_color="white")
                 
-                image_path = os.path.join(app.config['IMAGE_FOLDER'], f'{new_user.id}_business_card.png')
+                image_folder = app.config['IMAGE_FOLDER']
+                if not os.path.exists(image_folder):
+                    os.makedirs(image_folder) 
+                
+                image_path = os.path.join(image_folder, f'{new_user.id}_business_card.png')
                 img.save(image_path)
                 return redirect(url_for('download_file', id=new_user.id))
              
